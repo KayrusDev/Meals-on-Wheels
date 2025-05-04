@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dynamic Registration Form</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="min-h-screen bg-gradient-to-r from-gray-100 to-gray-200 flex items-center justify-center p-8">
+        <div class="bg-white p-10 rounded-2xl shadow-lg w-full max-w-3xl border border-gray-200">
+      <h2 class="text-2xl font-bold text-center mb-6">Create Account</h2>
+
+      <form id="registrationForm" class="space-y-4">
+
+        <!-- Basic Fields -->
+        <!-- Name Field with Icon -->
+      <div>
+        <label class="block font-semibold mb-1">Name:</label>
+        <div class="relative">
+          <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-500">
+            <i class="fa fa-user"></i>
+          </span>
+          <input type="text" class="w-full border pl-10 pr-3 py-2 rounded" placeholder="Full Name" required>
+        </div>
+      </div>
+
+      <!-- Email Field with Icon -->
+      <div>
+        <label class="block font-semibold mb-1">Email Address:</label>
+        <div class="relative">
+          <input type="email" class="w-full border px-3 py-2 pl-10 rounded" placeholder="Email Address" required>
+          <i class="fas fa-envelope absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+        </div>
+      </div>
+
+      <!-- Phone Field with Icon -->
+      <div>
+        <label class="block font-semibold mb-1">Phone Number:</label>
+        <div class="relative">
+          <input type="tel" class="w-full border px-3 py-2 pl-10 rounded" placeholder="Phone Number" required>
+          <i class="fas fa-phone absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+        </div>
+      </div>
+
+      <!-- Address Field with Icon -->
+      <div>
+        <label class="block font-semibold mb-1">Address:</label>
+        <div class="flex gap-2 relative w-full">
+          <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+            <i class="fas fa-location-dot"></i>
+          </span>
+          <input type="text" class="w-full border pl-10 px-3 py-2 rounded" placeholder="Address" required>
+          <button type="button" class="bg-red-600 text-white px-3 py-2 rounded hover:bg-red-700">Get Location</button>
+        </div>
+      </div>
+
+      <!-- Password Field with Icon -->
+      <div>
+        <label class="block font-semibold mb-1">Password:</label>
+        <div class="relative">
+          <input type="password" class="w-full border px-3 py-2 pl-10 rounded" placeholder="Password" required>
+          <i class="fas fa-lock absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+        </div>
+      </div>        
+
+        <div>
+          <label class="block font-semibold mb-1">Role:</label>
+          <select id="role" class="w-full border px-3 py-2 rounded" onchange="toggleRoleFields()" required>
+            <option value="">Select Role</option>
+            <option value="member">Member</option>
+            <option value="volunteer">Volunteer</option>
+            <option value="caregiver">Caregiver</option>
+            <option value="partner">Partner</option>
+          </select>
+        </div>
+
+        <!-- Member Fields -->
+        <div id="memberFields" class="hidden">
+          <label class="block font-semibold mb-1">Dietary Restrictions:</label>
+          <div class="space-y-2">
+            <label><input type="checkbox"> Low Sodium</label><br/>
+            <label><input type="checkbox"> Diabetic-Friendly</label><br/>
+            <label><input type="checkbox"> Low Fat / Low Cholesterol</label><br/>
+            <label><input type="checkbox"> Soft / Pureed Meals</label><br/>
+            <label><input type="checkbox"> Gluten-Free</label><br/>
+            <label><input type="checkbox"> Lactose-Free</label><br/>
+            <label><input type="checkbox"> Vegetarian</label><br/>
+            <label class="flex items-center gap-2">
+              <input type="checkbox"> Other:
+              <input type="text" class="flex-1 border px-2 py-1 rounded" placeholder="Please specify">
+            </label>
+          </div>
+        </div>
+
+        <!-- Volunteer Fields -->
+<div id="volunteerFields" class="hidden space-y-4">
+    <div>
+      <label class="block font-semibold mb-1">Type of Services:</label>
+      <select class="w-full border px-3 py-2 rounded">
+        <option value="kitchen">Kitchen</option>
+        <option value="delivery">Delivery</option>
+      </select>
+    </div>
+  
+        <div>
+          <label class="block font-semibold mb-1">Volunteer Duration (End Date):</label>
+          <div class="relative">
+            <input type="date" class="w-full border px-3 py-2 pl-10 rounded">
+            <i class="fas fa-calendar-alt absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+          </div>
+        </div>
+  
+    <div>
+      <label class="block font-semibold mb-2">Available Days:</label>
+      <div class="grid grid-cols-3 gap-2">
+        <label class="flex items-center gap-2">
+          <input type="checkbox"> Monday
+        </label>
+        <label class="flex items-center gap-2">
+          <input type="checkbox"> Tuesday
+        </label>
+        <label class="flex items-center gap-2">
+          <input type="checkbox"> Wednesday
+        </label>
+        <label class="flex items-center gap-2">
+          <input type="checkbox"> Thursday
+        </label>
+        <label class="flex items-center gap-2">
+          <input type="checkbox"> Friday
+        </label>
+        <label class="flex items-center gap-2">
+          <input type="checkbox"> Saturday
+        </label>
+        <label class="flex items-center gap-2">
+          <input type="checkbox"> Sunday
+        </label>
+      </div>
+    </div>
+  </div>  
+
+        <!-- Caregiver Fields -->
+        <div id="caregiverFields" class="hidden space-y-3">
+          <div>
+            <label class="block font-semibold mb-1">Member's Name:</label>
+            <input type="text" class="w-full border px-3 py-2 rounded">
+          </div>
+
+          <div>
+            <label class="block font-semibold mb-1">Member's Contact Number:</label>
+            <input type="tel" class="w-full border px-3 py-2 rounded">
+          </div>
+
+          <div>
+            <label class="block font-semibold mb-1">Member's Address:</label>
+            <div class="flex gap-2">
+              <input type="text" class="w-full border px-3 py-2 rounded">
+              <button type="button" class="bg-red-600 text-white px-3 py-2 rounded hover:bg-red-700">Get Location</button>
+            </div>
+          </div>
+
+          <div>
+            <label class="block font-semibold mb-1">Relationship to Member:</label>
+            <input type="text" class="w-full border px-3 py-2 rounded">
+          </div>
+        </div>
+
+        <!-- Partner Fields -->
+        <div id="partnerFields" class="hidden space-y-3">
+          <div>
+            <label class="block font-semibold mb-1">Restaurant Name:</label>
+            <input type="text" class="w-full border px-3 py-2 rounded">
+          </div>
+
+          <div>
+            <label class="block font-semibold mb-1">Partnership Duration (End Date):</label>
+            <input type="date" class="w-full border px-3 py-2 rounded">
+          </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="flex justify-end gap-4 pt-8 pr-2">
+            <button type="submit" class="flex items-center gap-2 px-4 py-2 border border-gray-700 rounded hover:bg-gray-700 hover:text-white transition">
+              <i class="fas fa-user-plus"></i> Create
+            </button>
+            <button type="reset" class="flex items-center gap-2 px-4 py-2 border border-gray-700 rounded hover:bg-gray-700 hover:text-white transition">
+              <i class="fas fa-times-circle"></i> Cancel
+            </button>
+          </div>
+          
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function toggleRoleFields() {
+      const role = document.getElementById('role').value;
+      const roles = ['member', 'volunteer', 'caregiver', 'partner'];
+      roles.forEach(r => document.getElementById(`${r}Fields`).classList.add('hidden'));
+      if (role) document.getElementById(`${role}Fields`).classList.remove('hidden');
+    }
+  </script>
+
+</body>
+</html>
